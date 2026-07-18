@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RentIt – Profile Settings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+      <div class="spinner-custom mb-3"></div>
+      <h5 class="fw-semibold text-secondary-theme">Opening secure database...</h5>
+    </div>
+
+    <!-- Header Navigation -->
+    <nav class="navbar navbar-custom">
+      <div class="container-fluid max-width-container d-flex justify-content-between align-items-center">
+        <a href="home.html" class="logo-brand" id="prof-brand-logo">
+          <i class="fa-solid fa-arrows-spin text-primary-theme"></i> Rent<span>It</span>
+        </a>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn dark-mode-toggle p-2 fs-5" id="prof-mode-toggle" aria-label="Toggle dark mode">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+          <a href="profile.html">
+            <img id="nav-avatar-img-prof" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Profile" class="nav-avatar-img">
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Wrapper -->
+    <main class="main-wrapper py-4" id="profile-page-container">
+      <div class="container">
+        <div class="row g-4">
+          <!-- Left Column Profile overview (4 Cols) -->
+          <div class="col-lg-4">
+            <div class="card card-custom p-4 border-0 shadow-sm text-center mb-4">
+              <!-- Avatar Slot -->
+              <div class="position-relative d-inline-block mx-auto mb-3">
+                <img id="prof-avatar" src="" class="rounded-circle object-fit-cover shadow-sm border border-2 border-primary" style="width: 90px; height: 90px;" alt="Avatar">
+                <label for="prof-avatar-file" class="position-absolute bottom-0 end-0 bg-primary-theme text-white rounded-circle d-flex align-items-center justify-content-center cursor-pointer shadow" style="width: 28px; height: 28px;">
+                  <i class="fa-solid fa-camera fs-8"></i>
+                </label>
+                <input type="file" id="prof-avatar-file" accept="image/*" class="d-none">
+              </div>
+
+              <!-- General Info -->
+              <h5 class="fw-bold text-dark font-poppins mb-1" id="prof-name-tag"></h5>
+              <p class="text-secondary-theme fs-8 mb-4" id="prof-email-tag"></p>
+
+              <!-- Profile Side links list -->
+              <div class="list-group list-group-flush text-start fs-7 font-poppins" id="profile-links-list">
+                <button class="list-group-item list-group-item-action border-0 px-2 py-2.5 rounded-3 active" id="btn-tab-info" data-tab="info">
+                  <i class="fa-regular fa-user me-2 text-primary-theme"></i> Personal Information
+                </button>
+                <button class="list-group-item list-group-item-action border-0 px-2 py-2.5 rounded-3 mt-1" id="btn-tab-bookings" data-tab="bookings">
+                  <i class="fa-solid fa-calendar-check me-2 text-primary-theme"></i> My Rental Bookings
+                </button>
+                <button class="list-group-item list-group-item-action border-0 px-2 py-2.5 rounded-3 mt-1" id="btn-tab-security" data-tab="security">
+                  <i class="fa-solid fa-shield-halved me-2 text-primary-theme"></i> Change Password
+                </button>
+                <button class="list-group-item list-group-item-action border-0 px-2 py-2.5 rounded-3 mt-1 text-danger logout-trigger" id="btn-tab-logout">
+                  <i class="fa-solid fa-arrow-right-from-bracket me-2"></i> Log Out Account
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column Settings tabs (8 Cols) -->
+          <div class="col-lg-8">
+            
+            <!-- Tab 1: Personal Info -->
+            <div id="tab-content-info" class="tab-pane-custom">
+              <div class="card card-custom p-4 border-0 shadow-sm">
+                <h5 class="fw-bold text-dark font-poppins mb-4">Edit Personal Profile</h5>
+                
+                <form id="edit-profile-form">
+                  <div class="row">
+                    <div class="col-sm-6 mb-3">
+                      <label for="prof-input-name" class="form-label fs-7 fw-semibold text-secondary-theme">Full Name</label>
+                      <input type="text" id="prof-input-name" class="form-control form-input-custom" required>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                      <label for="prof-input-phone" class="form-label fs-7 fw-semibold text-secondary-theme">Phone Number</label>
+                      <input type="tel" id="prof-input-phone" class="form-control form-input-custom" required>
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="prof-input-email" class="form-label fs-7 fw-semibold text-secondary-theme">Email Address</label>
+                    <input type="email" id="prof-input-email" class="form-control form-input-custom" required>
+                  </div>
+                  <div class="mb-4">
+                    <label for="prof-input-address" class="form-label fs-7 fw-semibold text-secondary-theme">Shipping / Billing Address</label>
+                    <textarea id="prof-input-address" class="form-control form-input-custom" rows="3" placeholder="Enter delivery address"></textarea>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary-custom px-4 py-2.5">
+                    Save Changes <i class="fa-solid fa-circle-check ms-1"></i>
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            <!-- Tab 2: My Bookings -->
+            <div id="tab-content-bookings" class="tab-pane-custom d-none">
+              <div class="card card-custom p-4 border-0 shadow-sm">
+                <h5 class="fw-bold text-dark font-poppins mb-4">My Rental Bookings</h5>
+                
+                <!-- Bookings Deck container -->
+                <div class="d-flex flex-column gap-3" id="prof-bookings-deck">
+                  <!-- Dynamically populated -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab 3: Security Settings -->
+            <div id="tab-content-security" class="tab-pane-custom d-none">
+              <div class="card card-custom p-4 border-0 shadow-sm">
+                <h5 class="fw-bold text-dark font-poppins mb-4">Change Password</h5>
+                
+                <form id="change-password-form">
+                  <div class="mb-3">
+                    <label for="pass-current" class="form-label fs-7 fw-semibold text-secondary-theme">Current Password</label>
+                    <input type="password" id="pass-current" class="form-control form-input-custom" required placeholder="••••••••">
+                  </div>
+                  <div class="mb-3">
+                    <label for="pass-new" class="form-label fs-7 fw-semibold text-secondary-theme">New Password</label>
+                    <input type="password" id="pass-new" class="form-control form-input-custom" required placeholder="••••••••">
+                  </div>
+                  <div class="mb-4">
+                    <label for="pass-confirm" class="form-label fs-7 fw-semibold text-secondary-theme">Confirm New Password</label>
+                    <input type="password" id="pass-confirm" class="form-control form-input-custom" required placeholder="••••••••">
+                  </div>
+
+                  <button type="submit" class="btn btn-primary-custom px-4 py-2.5">
+                    Update Password <i class="fa-solid fa-key ms-1"></i>
+                  </button>
+                </form>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Bottom Navigation Rail -->
+    <nav class="bottom-nav">
+      <a href="home.html" class="bottom-nav-item" id="bnav-home">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      </a>
+      <a href="categories.html" class="bottom-nav-item" id="bnav-categories">
+        <i class="fa-solid fa-compass"></i>
+        <span>Categories</span>
+      </a>
+      <a href="wishlist.html" class="bottom-nav-item" id="bnav-wishlist">
+        <i class="fa-solid fa-heart"></i>
+        <span class="badge-counter d-none wishlist-badge">0</span>
+        <span>Wishlist</span>
+      </a>
+      <a href="profile.html?tab=bookings" class="bottom-nav-item" id="bnav-bookings">
+        <i class="fa-solid fa-calendar-check"></i>
+        <span class="badge-counter d-none bookings-badge">0</span>
+        <span>Bookings</span>
+      </a>
+      <a href="profile.html" class="bottom-nav-item active" id="bnav-profile">
+        <i class="fa-solid fa-user"></i>
+        <span>Profile</span>
+      </a>
+    </nav>
+
+    <!-- QR verification modal overlay -->
+    <div class="modal fade" id="qr-modal" tabindex="-1" aria-labelledby="qrModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content card card-custom p-4 border-0 text-center">
+          <h6 class="fw-bold text-dark font-poppins mb-1">Verify Rental pickup</h6>
+          <p class="text-secondary-theme fs-8 mb-3">Host will scan this QR at checkout.</p>
+          <div class="bg-light p-2.5 rounded-3 d-inline-block mb-3 mx-auto">
+            <i class="fa-solid fa-qrcode text-dark" style="font-size: 6rem;"></i>
+          </div>
+          <div class="fs-8 font-mono fw-bold text-dark mb-2" id="modal-qr-val">BK-000000</div>
+          <button type="button" class="btn btn-secondary-custom btn-sm w-100" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap 5 Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript Shared Core -->
+    <script type="module" src="/js/script.js"></script>
+    <!-- Custom JavaScript Authentication Handling -->
+    <script type="module" src="/js/login.js"></script>
+
+    <!-- Profile dynamic tabs manager -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const user = getCurrentUser();
+
+        // Bind Left Card Overview
+        const profAvatar = document.getElementById("prof-avatar");
+        const profNameTag = document.getElementById("prof-name-tag");
+        const profEmailTag = document.getElementById("prof-email-tag");
+        
+        profAvatar.src = user.avatar;
+        profNameTag.textContent = user.name;
+        profEmailTag.textContent = user.email;
+
+        // Bind form inputs with user fields
+        const inputName = document.getElementById("prof-input-name");
+        const inputPhone = document.getElementById("prof-input-phone");
+        const inputEmail = document.getElementById("prof-input-email");
+        const inputAddress = document.getElementById("prof-input-address");
+
+        inputName.value = user.name;
+        inputPhone.value = user.phone;
+        inputEmail.value = user.email;
+        inputAddress.value = user.address || "";
+
+        // Interactive profile picture upload
+        const avatarInput = document.getElementById("prof-avatar-file");
+        if (avatarInput) {
+          avatarInput.addEventListener("change", (e) => {
+            const file = e.target.files[0];
+            if (file) {
+              const reader = new FileReader();
+              reader.onload = (event) => {
+                profAvatar.src = event.target.result;
+                const activeUser = getCurrentUser();
+                activeUser.avatar = event.target.result;
+                saveCurrentUser(activeUser);
+                showToast("Profile picture updated", "success");
+              };
+              reader.readAsDataURL(file);
+            }
+          });
+        }
+
+        // Handle profile form submit save
+        const profileForm = document.getElementById("edit-profile-form");
+        profileForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          showLoadingScreen();
+          setTimeout(() => {
+            const updated = {
+              ...getCurrentUser(),
+              name: inputName.value.trim(),
+              phone: inputPhone.value.trim(),
+              email: inputEmail.value.trim(),
+              address: inputAddress.value.trim()
+            };
+            saveCurrentUser(updated);
+            
+            // Sync overview
+            profNameTag.textContent = updated.name;
+            profEmailTag.textContent = updated.email;
+
+            hideLoadingScreen();
+            showToast("Profile details updated successfully", "success");
+          }, 600);
+        });
+
+        // Password Change submit mock
+        const passwordForm = document.getElementById("change-password-form");
+        passwordForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+          const cur = document.getElementById("pass-current").value;
+          const n1 = document.getElementById("pass-new").value;
+          const n2 = document.getElementById("pass-confirm").value;
+
+          if (n1.length < 6) {
+            showToast("New password must be 6+ chars", "error");
+            return;
+          }
+          if (n1 !== n2) {
+            showToast("New passwords do not match", "error");
+            return;
+          }
+
+          showLoadingScreen();
+          setTimeout(() => {
+            hideLoadingScreen();
+            showToast("Password updated successfully!", "success");
+            passwordForm.reset();
+          }, 800);
+        });
+
+        // Tab selection listener
+        const tabBtns = document.querySelectorAll("#profile-links-list button[data-tab]");
+        tabBtns.forEach(btn => {
+          btn.addEventListener("click", () => {
+            const tabId = btn.getAttribute("data-tab");
+            switchTab(tabId);
+          });
+        });
+
+        function switchTab(tabId) {
+          // Deactivate buttons
+          tabBtns.forEach(b => b.classList.remove("active"));
+          const activeBtn = Array.from(tabBtns).find(b => b.getAttribute("data-tab") === tabId);
+          if (activeBtn) activeBtn.classList.add("active");
+
+          // Toggle containers
+          const panes = document.querySelectorAll(".tab-pane-custom");
+          panes.forEach(p => p.classList.add("d-none"));
+          
+          const targetPane = document.getElementById(`tab-content-${tabId}`);
+          if (targetPane) targetPane.classList.remove("d-none");
+
+          if (tabId === "bookings") {
+            drawBookings();
+          }
+        }
+
+        // Render bookings list history
+        function drawBookings() {
+          const deck = document.getElementById("prof-bookings-deck");
+          const bookings = getBookings();
+          deck.innerHTML = "";
+
+          if (bookings.length === 0) {
+            deck.innerHTML = `
+              <div class="text-center py-4 text-secondary-theme">
+                <i class="fa-regular fa-calendar-minus fs-1 mb-2"></i>
+                <p class="fs-7 mb-0">No rental agreements listed. Book an item to get started!</p>
+              </div>
+            `;
+            return;
+          }
+
+          bookings.forEach(bk => {
+            const statusClass = bk.status === "Confirmed" ? "bg-emerald text-white" : "bg-secondary text-white";
+            const rowHtml = `
+              <div class="card border border-theme bg-light p-3 rounded-4">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <div>
+                    <span class="fs-8 text-secondary-theme font-mono fw-bold">${bk.id}</span>
+                    <h6 class="fw-bold text-dark font-poppins mb-0 mt-0.5">${bk.productTitle}</h6>
+                  </div>
+                  <span class="badge ${statusClass} fs-8 px-2 py-1 rounded">${bk.status}</span>
+                </div>
+                <div class="d-flex justify-content-between align-items-end">
+                  <div class="fs-8 text-secondary-theme">
+                    <p class="mb-0"><i class="fa-solid fa-calendar text-primary-theme me-1"></i> ${bk.startDate} to ${bk.endDate} (${bk.days} Days)</p>
+                    <p class="mb-0 mt-0.5"><i class="fa-solid fa-tag text-primary-theme me-1"></i> Total Charged: <span class="fw-bold text-dark">₹${bk.total.toFixed(2)}</span></p>
+                  </div>
+                  <button class="btn btn-secondary-custom btn-sm py-1 px-3 fs-8 d-flex align-items-center gap-1 open-qr-btn" data-qr="${bk.qrCode}" data-id="${bk.id}">
+                    <i class="fa-solid fa-qrcode text-primary-theme"></i> Show QR
+                  </button>
+                </div>
+              </div>
+            `;
+            deck.insertAdjacentHTML("beforeend", rowHtml);
+          });
+
+          // Attach QR triggers
+          deck.querySelectorAll(".open-qr-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+              const qr = btn.getAttribute("data-qr");
+              const id = btn.getAttribute("data-id");
+              document.getElementById("modal-qr-val").textContent = qr;
+              const modal = new bootstrap.Modal(document.getElementById("qr-modal"));
+              modal.show();
+            });
+          });
+        }
+
+        // Handle pre-selected query tab
+        const urlParams = new URLSearchParams(window.location.search);
+        const queryTab = urlParams.get("tab");
+        if (queryTab === "bookings") {
+          switchTab("bookings");
+          // Activate bottom-nav sync
+          document.getElementById("bnav-bookings").classList.add("active");
+          document.getElementById("bnav-profile").classList.remove("active");
+        }
+      });
+    </script>
+  </body>
+</html>

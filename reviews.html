@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RentIt – Submit Review</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+      <div class="spinner-custom mb-3"></div>
+      <h5 class="fw-semibold text-secondary-theme">Saving your customer review...</h5>
+    </div>
+
+    <!-- Header Navigation -->
+    <nav class="navbar navbar-custom">
+      <div class="container-fluid max-width-container d-flex justify-content-between align-items-center">
+        <a href="home.html" class="logo-brand" id="rev-brand-logo">
+          <i class="fa-solid fa-arrows-spin text-primary-theme"></i> Rent<span>It</span>
+        </a>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn dark-mode-toggle p-2 fs-5" id="rev-mode-btn" aria-label="Toggle mode">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+          <a href="profile.html">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Profile" class="nav-avatar-img">
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Wrapper -->
+    <main class="main-wrapper py-4">
+      <div class="container">
+        <!-- Back navigation link -->
+        <div class="mb-4">
+          <a href="" class="fs-7 text-secondary-theme fw-semibold" id="back-product-link">
+            <i class="fa-solid fa-arrow-left me-1"></i> Cancel Review
+          </a>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-6">
+            <div class="card card-custom p-4 border-0 shadow-sm text-center">
+              
+              <!-- Title header -->
+              <h4 class="fw-bold text-dark font-poppins mb-1">Write a Review</h4>
+              <p class="text-secondary-theme fs-7 mb-4">Share your rental experience with the marketplace community</p>
+
+              <!-- Selected Product summary container -->
+              <div class="d-flex align-items-center gap-3 p-2.5 bg-light rounded-4 border border-theme text-start mb-4">
+                <img id="rev-product-image" src="" class="rounded-3 object-fit-cover shadow-sm" style="width: 56px; height: 56px;" alt="">
+                <div>
+                  <h6 class="fw-bold text-dark mb-1 fs-7 font-poppins text-truncate" id="rev-product-title" style="max-width: 250px;"></h6>
+                  <p class="text-secondary-theme fs-8 mb-0" id="rev-product-category"></p>
+                </div>
+              </div>
+
+              <!-- Interactive Star Rating selection slot -->
+              <div class="mb-4">
+                <label class="form-label fs-7 fw-semibold text-secondary-theme d-block mb-2">Overall Rating Rating</label>
+                <div class="d-flex justify-content-center gap-2 fs-3 text-secondary" id="interactive-star-row">
+                  <i class="fa-regular fa-star cursor-pointer star-item" data-val="1"></i>
+                  <i class="fa-regular fa-star cursor-pointer star-item" data-val="2"></i>
+                  <i class="fa-regular fa-star cursor-pointer star-item" data-val="3"></i>
+                  <i class="fa-regular fa-star cursor-pointer star-item" data-val="4"></i>
+                  <i class="fa-regular fa-star cursor-pointer star-item" data-val="5"></i>
+                </div>
+                <input type="hidden" id="selected-rating-value" value="0">
+              </div>
+
+              <form id="submit-review-form" class="text-start">
+                <div class="mb-3">
+                  <label for="rev-author-name" class="form-label fs-7 fw-semibold text-secondary-theme">Your Name (Reviewer)</label>
+                  <input type="text" id="rev-author-name" class="form-control form-input-custom" placeholder="Alexander Pierce" required>
+                </div>
+                <div class="mb-4">
+                  <label for="rev-text" class="form-label fs-7 fw-semibold text-secondary-theme">Review Comment Details</label>
+                  <textarea id="rev-text" class="form-control form-input-custom" rows="4" placeholder="How was the equipment condition? Was pickup and drop-off smooth?" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary-custom w-100 py-3 shadow-sm font-poppins fw-semibold">
+                  Publish Review <i class="fa-solid fa-circle-check ms-1"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Bottom Navigation Rail -->
+    <nav class="bottom-nav">
+      <a href="home.html" class="bottom-nav-item">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      </a>
+      <a href="categories.html" class="bottom-nav-item">
+        <i class="fa-solid fa-compass"></i>
+        <span>Categories</span>
+      </a>
+      <a href="wishlist.html" class="bottom-nav-item">
+        <i class="fa-solid fa-heart"></i>
+        <span class="badge-counter d-none wishlist-badge">0</span>
+        <span>Wishlist</span>
+      </a>
+      <a href="profile.html?tab=bookings" class="bottom-nav-item">
+        <i class="fa-solid fa-calendar-check"></i>
+        <span class="badge-counter d-none bookings-badge">0</span>
+        <span>Bookings</span>
+      </a>
+      <a href="profile.html" class="bottom-nav-item active">
+        <i class="fa-solid fa-user"></i>
+        <span>Profile</span>
+      </a>
+    </nav>
+
+    <!-- Bootstrap 5 Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript Shared Core -->
+    <script type="module" src="/js/script.js"></script>
+    <!-- Custom JavaScript Booking handler (includes submission write) -->
+    <script type="module" src="/js/booking.js"></script>
+
+    <!-- Interactive Star triggers script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get("id") || "prod-1";
+        const product = getProductById(productId);
+
+        if (!product) {
+          showToast("Item specs not found.", "error");
+          setTimeout(() => { window.location.href = "home.html"; }, 1000);
+          return;
+        }
+
+        // Bind Item overview details
+        document.getElementById("rev-product-image").src = product.image;
+        document.getElementById("rev-product-title").textContent = product.title;
+        document.getElementById("rev-product-category").textContent = product.category;
+        document.getElementById("back-product-link").href = `product.html?id=${product.id}`;
+
+        const stars = document.querySelectorAll(".star-item");
+        const selectedRatingInput = document.getElementById("selected-rating-value");
+
+        // Hover & Click states for star items
+        stars.forEach(star => {
+          star.addEventListener("mouseover", () => {
+            const val = parseInt(star.getAttribute("data-val"));
+            highlightStars(val);
+          });
+
+          star.addEventListener("mouseout", () => {
+            const currentSelected = parseInt(selectedRatingInput.value);
+            highlightStars(currentSelected);
+          });
+
+          star.addEventListener("click", () => {
+            const val = parseInt(star.getAttribute("data-val"));
+            selectedRatingInput.value = val;
+            highlightStars(val);
+            showToast(`Rated ${val} Stars`, "info");
+          });
+        });
+
+        function highlightStars(val) {
+          stars.forEach(s => {
+            const itemVal = parseInt(s.getAttribute("data-val"));
+            if (itemVal <= val) {
+              s.className = "fa-solid fa-star text-amber cursor-pointer star-item";
+            } else {
+              s.className = "fa-regular fa-star text-secondary cursor-pointer star-item";
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

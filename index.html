@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RentIt – Multi-Category Online Rental Marketplace</title>
+    <!-- Google Fonts Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+      <div class="spinner-custom mb-3"></div>
+      <h5 class="fw-semibold text-secondary-theme">RentIt is warming up...</h5>
+    </div>
+
+    <!-- Top Navigation Bar -->
+    <nav class="navbar navbar-custom" id="main-nav-bar">
+      <div class="container-fluid max-width-container">
+        <a href="index.html" class="logo-brand" id="logo-index">
+          <i class="fa-solid fa-arrows-spin text-primary-theme"></i> Rent<span>It</span>
+        </a>
+        <div class="d-flex align-items-center gap-3">
+          <button class="btn dark-mode-toggle p-2 fs-5" id="theme-toggle-btn" aria-label="Toggle dark mode">
+            <i class="fa-solid fa-moon text-secondary-theme"></i>
+          </button>
+          <a href="login.html" class="btn btn-secondary-custom d-none d-sm-inline-block" id="nav-btn-login">Login</a>
+          <a href="register.html" class="btn btn-primary-custom" id="nav-btn-signup">Get Started</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Wrapper -->
+    <main class="main-wrapper py-5">
+      <div class="container py-3">
+        <!-- Hero Section -->
+        <div class="row align-items-center mb-5 g-5">
+          <div class="col-lg-6">
+            <span class="badge bg-primary-light text-primary-theme px-3 py-2 rounded-pill font-poppins fw-semibold mb-3">
+              🎉 Welcome to the Future of Sharing
+            </span>
+            <h1 class="display-4 fw-bold mb-4 font-poppins text-primary-dark tracking-tight leading-sm">
+              Don't Buy it. <br><span class="text-primary-theme">Rent It</span> Instantly.
+            </h1>
+            <p class="text-secondary-theme fs-5 mb-5 font-poppins">
+              RentIt is Seattle's premier multi-category online rental marketplace. Browse cameras, premium vehicles, cozy beachfront vacation homes, tools, high-spec drones, and more.
+            </p>
+            <div class="d-flex flex-wrap gap-3">
+              <a href="home.html" class="btn btn-primary-custom px-4 py-3 fs-6 shadow-soft" id="hero-explore-btn">
+                <i class="fa-solid fa-compass me-2"></i> Explore Marketplace
+              </a>
+              <a href="login.html" class="btn btn-secondary-custom px-4 py-3 fs-6" id="hero-host-btn">
+                <i class="fa-solid fa-handshake me-2"></i> List Your Item
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="gateway-hero-image d-flex flex-column justify-content-end align-items-start">
+              <h2 class="fw-bold mb-2">Secure & Insured Rentals</h2>
+              <p class="mb-4 text-white-50">Every single transaction is covered by our $5,000 RentIt Guarantee.</p>
+              <div class="d-flex gap-4">
+                <div class="d-flex align-items-center gap-2">
+                  <i class="fa-solid fa-shield-halved text-accent-theme fs-4"></i>
+                  <span class="fw-medium text-white fs-7">Verified Owners</span>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                  <i class="fa-solid fa-circle-check text-accent-theme fs-4"></i>
+                  <span class="fw-medium text-white fs-7">100% Protection</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Horizontal Quick Categories Info -->
+        <div class="my-5 text-center">
+          <h3 class="fw-bold mb-4">Browse Premium Rental Categories</h3>
+          <div class="d-flex justify-content-center flex-wrap gap-3 py-3">
+            <a href="categories.html" class="category-pill shadow-sm"><i class="fa-solid fa-camera text-primary-theme"></i> Cameras</a>
+            <a href="categories.html" class="category-pill shadow-sm"><i class="fa-solid fa-car text-primary-theme"></i> Vehicles</a>
+            <a href="categories.html" class="category-pill shadow-sm"><i class="fa-solid fa-house text-primary-theme"></i> Houses</a>
+            <a href="categories.html" class="category-pill shadow-sm"><i class="fa-solid fa-laptop text-primary-theme"></i> Electronics</a>
+            <a href="categories.html" class="category-pill shadow-sm"><i class="fa-solid fa-chair text-primary-theme"></i> Furniture</a>
+            <a href="categories.html" class="category-pill shadow-sm"><i class="fa-solid fa-hammer text-primary-theme"></i> Tools</a>
+          </div>
+        </div>
+
+        <!-- Features Bento Grid -->
+        <div class="row g-4 mt-5">
+          <div class="col-md-4">
+            <div class="bento-stat-card card-custom h-100" id="feature-1">
+              <div class="bento-stat-icon-wrapper bg-primary-light text-primary-theme">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </div>
+              <h4 class="fw-bold mb-2">Smart Search Filters</h4>
+              <p class="text-secondary-theme">Find precisely what you need, filter by distance, rental budget, and live calendar availability.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="bento-stat-card card-custom h-100" id="feature-2">
+              <div class="bento-stat-icon-wrapper bg-accent-light text-accent-theme">
+                <i class="fa-solid fa-calendar-days"></i>
+              </div>
+              <h4 class="fw-bold mb-2">Flexible Booking Engine</h4>
+              <p class="text-secondary-theme">Book by the day or week. Easy modifications, instant automated invoice and receipt generation.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="bento-stat-card card-custom h-100" id="feature-3">
+              <div class="bento-stat-icon-wrapper bg-danger-subtle text-danger">
+                <i class="fa-solid fa-wallet"></i>
+              </div>
+              <h4 class="fw-bold mb-2">Earn Extra Income</h4>
+              <p class="text-secondary-theme">List your idle gear, electronics, or extra parking spaces. Control your own pricing and calendar.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-auto">
+      <div class="container text-center">
+        <p class="mb-1 fw-bold fs-6">RentIt Marketplace © 2026</p>
+        <p class="text-white-50 fs-8 mb-0">Designed in high-fidelity Google Stitch Mobile design. Full local state persistence activated.</p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap 5 Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript Core -->
+    <script type="module" src="/js/script.js"></script>
+  </body>
+</html>

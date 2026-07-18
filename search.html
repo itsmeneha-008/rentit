@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RentIt – Search & Filters</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+      <div class="spinner-custom mb-3"></div>
+      <h5 class="fw-semibold text-secondary-theme">Filtering directories...</h5>
+    </div>
+
+    <!-- Header Navigation -->
+    <nav class="navbar navbar-custom">
+      <div class="container-fluid max-width-container d-flex justify-content-between align-items-center">
+        <a href="home.html" class="logo-brand" id="search-brand-logo">
+          <i class="fa-solid fa-arrows-spin text-primary-theme"></i> Rent<span>It</span>
+        </a>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn dark-mode-toggle p-2 fs-5" id="search-mode-btn" aria-label="Toggle mode">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+          <a href="profile.html">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Profile" class="nav-avatar-img">
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Wrapper -->
+    <main class="main-wrapper py-4">
+      <div class="container">
+        <!-- Interactive Search Row -->
+        <div class="row mb-4">
+          <div class="col-12">
+            <div class="card card-custom p-3 border-0 shadow-sm mb-3">
+              <div class="input-group">
+                <span class="input-group-text border-theme bg-white text-secondary-theme ps-3" id="main-search-addon">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </span>
+                <input type="text" id="search-input-field" class="form-control form-input-custom py-2.5 fs-7 border-start-0" placeholder="What are you looking to rent?" aria-describedby="main-search-addon" aria-label="Search">
+                <button class="btn btn-primary-custom px-4" type="button" id="search-trigger-btn">Search</button>
+              </div>
+            </div>
+
+            <!-- Recent and Popular Searches chips -->
+            <div class="d-flex flex-wrap gap-2 align-items-center" id="search-suggestions-container">
+              <span class="fs-8 fw-semibold text-secondary-theme">Recent:</span>
+              <button class="badge bg-light text-dark border border-theme p-2 rounded-pill fs-8 tag-suggestion">Tesla Model 3</button>
+              <button class="badge bg-light text-dark border border-theme p-2 rounded-pill fs-8 tag-suggestion">Sony Alpha</button>
+              <span class="fs-8 fw-semibold text-secondary-theme ms-2">Popular:</span>
+              <button class="badge bg-light text-dark border border-theme p-2 rounded-pill fs-8 tag-suggestion">Mavic Drone</button>
+              <button class="badge bg-light text-dark border border-theme p-2 rounded-pill fs-8 tag-suggestion">Beachfront Cabin</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <!-- Advanced Filters Sidebar (3 Cols) -->
+          <div class="col-lg-3">
+            <div class="card card-custom p-4 sticky-filter-sidebar shadow-sm">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h6 class="fw-bold mb-0 font-poppins text-primary-dark">Advanced Filters</h6>
+                <button class="fs-8 text-primary-theme fw-semibold p-0" id="clear-filters-btn">Reset All</button>
+              </div>
+              <hr class="border-theme mt-0 mb-4">
+
+              <!-- Category Select -->
+              <div class="mb-4">
+                <label for="filter-category" class="form-label fs-7 fw-semibold text-secondary-theme">Category</label>
+                <select id="filter-category" class="form-select form-input-custom fs-7">
+                  <option value="all">All Categories</option>
+                  <option value="Cameras">Cameras</option>
+                  <option value="Cars">Cars</option>
+                  <option value="Bikes">Bikes</option>
+                  <option value="Houses">Houses</option>
+                  <option value="Apartments">Apartments</option>
+                  <option value="Electronics">Electronics</option>
+                  <option value="Furniture">Furniture</option>
+                  <option value="Power Tools">Power Tools</option>
+                  <option value="Musical Instruments">Musical Instruments</option>
+                  <option value="Drones">Drones</option>
+                </select>
+              </div>
+
+              <!-- Price Per Day Range -->
+              <div class="mb-4">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <label for="filter-price-slider" class="form-label fs-7 fw-semibold text-secondary-theme mb-0">Max Budget / Day</label>
+                  <span class="fs-7 fw-bold text-primary-theme" id="filter-price-val">₹250</span>
+                </div>
+                <input type="range" class="form-range" id="filter-price-slider" min="10" max="300" step="5" value="250">
+                <div class="d-flex justify-content-between fs-8 text-secondary-theme">
+                  <span>₹10</span>
+                  <span>₹300</span>
+                </div>
+              </div>
+
+              <!-- Rating Selection -->
+              <div class="mb-4">
+                <label for="filter-rating" class="form-label fs-7 fw-semibold text-secondary-theme">Minimum Rating</label>
+                <select id="filter-rating" class="form-select form-input-custom fs-7">
+                  <option value="all">Any Rating</option>
+                  <option value="4.8">⭐ 4.8 & Above</option>
+                  <option value="4.5">⭐ 4.5 & Above</option>
+                  <option value="4.0">⭐ 4.0 & Above</option>
+                </select>
+              </div>
+
+              <!-- Distance radius (Mocked) -->
+              <div class="mb-4">
+                <label for="filter-distance" class="form-label fs-7 fw-semibold text-secondary-theme">Max Distance</label>
+                <select id="filter-distance" class="form-select form-input-custom fs-7">
+                  <option value="all">Everywhere (Seattle)</option>
+                  <option value="5">Within 5 miles</option>
+                  <option value="10">Within 10 miles</option>
+                  <option value="20">Within 20 miles</option>
+                </select>
+              </div>
+
+              <!-- Availability Switch -->
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="filter-availability" checked>
+                <label class="form-check-label fs-7 fw-semibold text-secondary-theme" for="filter-availability">Show Available Only</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Grid Results (9 Cols) -->
+          <div class="col-lg-9">
+            <!-- Results Header Info -->
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <span class="fs-7 text-secondary-theme font-poppins" id="results-count-text">Found 0 items matches</span>
+              <div class="d-flex align-items-center gap-2">
+                <label for="sort-dropdown" class="fs-8 fw-semibold text-secondary-theme text-nowrap mb-0">Sort By</label>
+                <select id="sort-dropdown" class="form-select form-select-sm border-theme fs-8 font-poppins rounded-3" style="width: 140px;">
+                  <option value="default">Relevance</option>
+                  <option value="price-asc">Price: Low to High</option>
+                  <option value="price-desc">Price: High to Low</option>
+                  <option value="rating-desc">Highest Rated</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Dynamic Listings Deck -->
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4" id="search-listings-deck">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Bottom Navigation Rail -->
+    <nav class="bottom-nav">
+      <a href="home.html" class="bottom-nav-item" id="bnav-home">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      </a>
+      <a href="categories.html" class="bottom-nav-item" id="bnav-categories">
+        <i class="fa-solid fa-compass"></i>
+        <span>Categories</span>
+      </a>
+      <a href="wishlist.html" class="bottom-nav-item" id="bnav-wishlist">
+        <i class="fa-solid fa-heart"></i>
+        <span class="badge-counter d-none wishlist-badge">0</span>
+        <span>Wishlist</span>
+      </a>
+      <a href="profile.html?tab=bookings" class="bottom-nav-item" id="bnav-bookings">
+        <i class="fa-solid fa-calendar-check"></i>
+        <span class="badge-counter d-none bookings-badge">0</span>
+        <span>Bookings</span>
+      </a>
+      <a href="profile.html" class="bottom-nav-item" id="bnav-profile">
+        <i class="fa-solid fa-user"></i>
+        <span>Profile</span>
+      </a>
+    </nav>
+
+    <!-- Bootstrap 5 Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript Shared Core -->
+    <script type="module" src="/js/script.js"></script>
+
+    <!-- Filter Application Logic Script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Elements Hook
+        const inputField = document.getElementById("search-input-field");
+        const triggerBtn = document.getElementById("search-trigger-btn");
+        const categorySelect = document.getElementById("filter-category");
+        const priceSlider = document.getElementById("filter-price-slider");
+        const priceValueText = document.getElementById("filter-price-val");
+        const ratingSelect = document.getElementById("filter-rating");
+        const availabilityCheck = document.getElementById("filter-availability");
+        const sortSelect = document.getElementById("sort-dropdown");
+        const clearBtn = document.getElementById("clear-filters-btn");
+        const resultsCountText = document.getElementById("results-count-text");
+        const deckContainer = document.getElementById("search-listings-deck");
+
+        // Parse search query and pre-populate if needed
+        const urlParams = new URLSearchParams(window.location.search);
+        let currentQuery = urlParams.get("query") || "";
+        let currentCategory = urlParams.get("category") || "all";
+        let currentSort = urlParams.get("sort") || "default";
+
+        if (currentQuery) inputField.value = currentQuery;
+        
+        // Match specific categories or key translation
+        if (currentCategory !== "all") {
+          // Normalize if shorthand key was used
+          if (currentCategory === "camera") currentCategory = "Cameras";
+          else if (currentCategory === "vehicle") currentCategory = "Cars"; // default cars
+          else if (currentCategory === "house") currentCategory = "Houses";
+          else if (currentCategory === "electronics") currentCategory = "Electronics";
+          else if (currentCategory === "furniture") currentCategory = "Furniture";
+          else if (currentCategory === "drone") currentCategory = "Drones";
+          else if (currentCategory === "music") currentCategory = "Musical Instruments";
+          else if (currentCategory === "camp") currentCategory = "Camping Equipment";
+          
+          categorySelect.value = currentCategory;
+        }
+
+        if (currentSort !== "default") {
+          if (currentSort === "rating") sortSelect.value = "rating-desc";
+        }
+
+        // Live slider text update
+        priceSlider.addEventListener("input", () => {
+          priceValueText.textContent = `₹${priceSlider.value}`;
+          triggerFilterQuery();
+        });
+
+        // Trigger updates on filters modifications
+        categorySelect.addEventListener("change", triggerFilterQuery);
+        ratingSelect.addEventListener("change", triggerFilterQuery);
+        availabilityCheck.addEventListener("change", triggerFilterQuery);
+        sortSelect.addEventListener("change", triggerFilterQuery);
+        triggerBtn.addEventListener("click", () => {
+          currentQuery = inputField.value.trim();
+          triggerFilterQuery();
+        });
+
+        inputField.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") {
+            currentQuery = inputField.value.trim();
+            triggerFilterQuery();
+          }
+        });
+
+        // Click suggestions chips
+        document.querySelectorAll(".tag-suggestion").forEach(chip => {
+          chip.addEventListener("click", () => {
+            const val = chip.textContent;
+            inputField.value = val;
+            currentQuery = val;
+            triggerFilterQuery();
+          });
+        });
+
+        // Reset Filters Button
+        clearBtn.addEventListener("click", () => {
+          inputField.value = "";
+          currentQuery = "";
+          categorySelect.value = "all";
+          priceSlider.value = 300;
+          priceValueText.textContent = "₹300";
+          ratingSelect.value = "all";
+          availabilityCheck.checked = false;
+          sortSelect.value = "default";
+          triggerFilterQuery();
+          showToast("Filters reset successfully", "info");
+        });
+
+        // Main filter calculation function
+        function triggerFilterQuery() {
+          const products = getProducts();
+          const queryTerm = inputField.value.trim().toLowerCase();
+          const selectedCat = categorySelect.value;
+          const maxPrice = parseFloat(priceSlider.value);
+          const minRating = ratingSelect.value === "all" ? 0 : parseFloat(ratingSelect.value);
+          const availOnly = availabilityCheck.checked;
+          const sorting = sortSelect.value;
+
+          // Perform native filter across database array
+          let results = products.filter(p => {
+            // Title or location query
+            const matchesQuery = !queryTerm || 
+                                 p.title.toLowerCase().includes(queryTerm) || 
+                                 p.location.toLowerCase().includes(queryTerm) ||
+                                 p.category.toLowerCase().includes(queryTerm);
+
+            // Category match
+            const matchesCategory = selectedCat === "all" || p.category === selectedCat;
+
+            // Pricing range match
+            const matchesPrice = p.price <= maxPrice;
+
+            // Rating threshold match
+            const matchesRating = p.rating >= minRating;
+
+            // Live availability check
+            const matchesAvail = !availOnly || p.availability === "Available";
+
+            return matchesQuery && matchesCategory && matchesPrice && matchesRating && matchesAvail;
+          });
+
+          // Perform Sorting
+          if (sorting === "price-asc") {
+            results.sort((a,b) => a.price - b.price);
+          } else if (sorting === "price-desc") {
+            results.sort((a,b) => b.price - a.price);
+          } else if (sorting === "rating-desc") {
+            results.sort((a,b) => b.rating - a.rating);
+          }
+
+          // Update summary text
+          resultsCountText.textContent = `Found ${results.length} item${results.length !== 1 ? "s" : ""} matching`;
+
+          // Redraw grid
+          renderFilterGrid(results);
+        }
+
+        function renderFilterGrid(results) {
+          deckContainer.innerHTML = "";
+
+          if (results.length === 0) {
+            deckContainer.innerHTML = `
+              <div class="col-12 text-center py-5">
+                <i class="fa-solid fa-hourglass-empty text-secondary-theme fs-1 mb-3"></i>
+                <h5 class="fw-semibold text-dark">No Matching Rentals Found</h5>
+                <p class="text-secondary-theme fs-7">Try adjusting your filters, resetting price caps, or modifying search keywords.</p>
+              </div>
+            `;
+            return;
+          }
+
+          results.forEach(p => {
+            const isWish = isInWishlist(p.id);
+            const itemHtml = `
+              <div class="col">
+                <div class="card-custom h-100">
+                  <div class="card-img-wrapper">
+                    <span class="card-badge bg-dark">${p.category}</span>
+                    <button class="bookmark-btn ${isWish ? "active" : ""}" data-id="${p.id}" aria-label="Add to wishlist">
+                      <i class="fa-${isWish ? "solid" : "regular"} fa-heart"></i>
+                    </button>
+                    <a href="product.html?id=${p.id}">
+                      <img src="${p.image}" alt="${p.title}" loading="lazy">
+                    </a>
+                  </div>
+                  <div class="card-body p-3">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                      <span class="fs-8 text-secondary-theme d-flex align-items-center gap-1">
+                        <i class="fa-solid fa-location-dot text-primary-theme"></i> ${p.location.split(",")[0]}
+                      </span>
+                      <span class="fs-8 bg-light text-dark px-2 py-0.5 rounded fw-semibold text-accent-theme">
+                        ${p.availability}
+                      </span>
+                    </div>
+                    <h6 class="card-title fw-bold text-dark font-poppins text-truncate mb-2">
+                      <a href="product.html?id=${p.id}">${p.title}</a>
+                    </h6>
+                    <div class="d-flex justify-content-between align-items-center mt-2 pt-2 border-top border-light">
+                      <div>
+                        <span class="fw-bold text-primary-theme fs-5">₹${p.price}</span>
+                        <span class="fs-8 text-secondary-theme">/ day</span>
+                      </div>
+                      <div class="d-flex align-items-center gap-1 fs-7">
+                        <i class="fa-solid fa-star text-amber"></i>
+                        <span class="fw-bold text-dark">${p.rating}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            `;
+            deckContainer.insertAdjacentHTML("beforeend", itemHtml);
+          });
+
+          // Re-attach wishlist click events
+          deckContainer.querySelectorAll(".bookmark-btn").forEach(btn => {
+            btn.addEventListener("click", (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              const id = btn.getAttribute("data-id");
+              const active = toggleWishlist(id);
+              const icon = btn.querySelector("i");
+              if (active) {
+                btn.classList.add("active");
+                icon.className = "fa-solid fa-heart";
+              } else {
+                btn.classList.remove("active");
+                icon.className = "fa-regular fa-heart";
+              }
+            });
+          });
+        }
+
+        // Trigger initial load search
+        triggerFilterQuery();
+      });
+    </script>
+  </body>
+</html>

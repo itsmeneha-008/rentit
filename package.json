@@ -1,0 +1,14 @@
+{
+  "name": "rentit-marketplace",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "http-server . -p 3000",
+    "build": "rm -rf dist && mkdir -p dist && cp -r css js assets dist/ && cp *.html dist/",
+    "lint": "echo 'No linting required for static assets'"
+  },
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
+}

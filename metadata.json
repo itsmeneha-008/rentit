@@ -1,0 +1,6 @@
+{
+  "name": "RentIt - Online Rental Marketplace",
+  "description": "Multi-category online rental marketplace platform for cameras, vehicles, houses, electronics, furniture, and more.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RentIt – Secure Payment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+      <div class="spinner-custom mb-3"></div>
+      <h5 class="fw-semibold text-secondary-theme">Processing secure transaction...</h5>
+    </div>
+
+    <!-- Header Navigation -->
+    <nav class="navbar navbar-custom">
+      <div class="container-fluid max-width-container d-flex justify-content-between align-items-center">
+        <a href="home.html" class="logo-brand" id="pay-brand-logo">
+          <i class="fa-solid fa-arrows-spin text-primary-theme"></i> Rent<span>It</span>
+        </a>
+        <div class="d-flex align-items-center gap-2">
+          <i class="fa-solid fa-lock text-accent-theme fs-5"></i>
+          <span class="fs-8 fw-semibold text-secondary-theme font-poppins d-none d-sm-inline">256-Bit SSL Encrypted</span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Wrapper -->
+    <main class="main-wrapper py-4" id="payment-page-container">
+      <div class="container">
+        <!-- Back Link -->
+        <div class="mb-4">
+          <a href="home.html" class="fs-7 text-secondary-theme fw-semibold" id="back-home-payment">
+            <i class="fa-solid fa-arrow-left me-1"></i> Cancel Checkout
+          </a>
+        </div>
+
+        <div class="row g-4">
+          <!-- Left Column: Payment Selectors & Input Details (7 Cols) -->
+          <div class="col-lg-7">
+            <!-- Payment Selector Grid -->
+            <div class="card card-custom p-4 border-0 shadow-sm mb-4">
+              <h5 class="fw-bold text-dark font-poppins mb-4"><i class="fa-solid fa-shield-halved text-primary-theme me-2"></i> Payment Method</h5>
+              
+              <div class="row g-3">
+                <!-- 1. Credit Card (Active by Default) -->
+                <div class="col-6 col-sm-4">
+                  <div class="payment-method-card border border-2 rounded-4 p-3 text-center cursor-pointer border-primary bg-light-blue" data-method="Credit Card">
+                    <i class="fa-solid fa-credit-card text-primary-theme fs-3 mb-2"></i>
+                    <h6 class="fs-8 fw-bold text-dark mb-0 font-poppins">Credit Card</h6>
+                  </div>
+                </div>
+
+                <!-- 2. Debit Card -->
+                <div class="col-6 col-sm-4">
+                  <div class="payment-method-card border border-2 border-theme rounded-4 p-3 text-center cursor-pointer" data-method="Debit Card">
+                    <i class="fa-regular fa-credit-card text-secondary-theme fs-3 mb-2"></i>
+                    <h6 class="fs-8 fw-bold text-dark mb-0 font-poppins">Debit Card</h6>
+                  </div>
+                </div>
+
+                <!-- 3. UPI -->
+                <div class="col-6 col-sm-4">
+                  <div class="payment-method-card border border-2 border-theme rounded-4 p-3 text-center cursor-pointer" data-method="UPI">
+                    <i class="fa-solid fa-qrcode text-secondary-theme fs-3 mb-2"></i>
+                    <h6 class="fs-8 fw-bold text-dark mb-0 font-poppins">UPI QR / ID</h6>
+                  </div>
+                </div>
+
+                <!-- 4. Net Banking -->
+                <div class="col-6 col-sm-4">
+                  <div class="payment-method-card border border-2 border-theme rounded-4 p-3 text-center cursor-pointer" data-method="Net Banking">
+                    <i class="fa-solid fa-building-columns text-secondary-theme fs-3 mb-2"></i>
+                    <h6 class="fs-8 fw-bold text-dark mb-0 font-poppins">Net Banking</h6>
+                  </div>
+                </div>
+
+                <!-- 5. Digital Wallet -->
+                <div class="col-6 col-sm-4">
+                  <div class="payment-method-card border border-2 border-theme rounded-4 p-3 text-center cursor-pointer" data-method="Wallet">
+                    <i class="fa-solid fa-wallet text-secondary-theme fs-3 mb-2"></i>
+                    <h6 class="fs-8 fw-bold text-dark mb-0 font-poppins">Wallet (GPay/Apple)</h6>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Input Forms Base -->
+              <div class="mt-4 pt-3 border-top border-light">
+                
+                <!-- Card details (Shown by Default) -->
+                <div id="credit-card-fields">
+                  <div class="mb-3">
+                    <label for="cc-name" class="form-label fs-7 fw-semibold text-secondary-theme">Cardholder Name</label>
+                    <input type="text" id="cc-name" class="form-control form-input-custom" placeholder="Alexander Pierce" value="Alexander Pierce">
+                  </div>
+                  <div class="mb-3">
+                    <label for="cc-number" class="form-label fs-7 fw-semibold text-secondary-theme">Card Number</label>
+                    <div class="input-group">
+                      <span class="input-group-text border-theme bg-white text-secondary-theme" id="cc-addon">
+                        <i class="fa-solid fa-credit-card"></i>
+                      </span>
+                      <input type="text" id="cc-number" class="form-control form-input-custom" placeholder="4111 2222 3333 4444" value="4111 2222 3333 4444" aria-describedby="cc-addon">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-6 mb-3">
+                      <label for="cc-exp" class="form-label fs-7 fw-semibold text-secondary-theme">Expiry Date</label>
+                      <input type="text" id="cc-exp" class="form-control form-input-custom" placeholder="MM/YY" value="12/28">
+                    </div>
+                    <div class="col-6 mb-3">
+                      <label for="cc-cvv" class="form-label fs-7 fw-semibold text-secondary-theme">CVV Code</label>
+                      <input type="password" id="cc-cvv" class="form-control form-input-custom" placeholder="•••" value="123">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- UPI Input field (Hidden by Default) -->
+                <div id="upi-fields" class="d-none">
+                  <div class="mb-3">
+                    <label for="upi-id" class="form-label fs-7 fw-semibold text-secondary-theme">UPI Virtual Address (VPA)</label>
+                    <input type="text" id="upi-id" class="form-control form-input-custom" placeholder="alexander@okaxis">
+                    <span class="fs-8 text-secondary-theme mt-1.5 d-block"><i class="fa-solid fa-circle-info"></i> Standard addresses: mobile_number@upi or name@bank</span>
+                  </div>
+                </div>
+
+                <!-- Net Banking fields (Hidden by Default) -->
+                <div id="netbanking-fields" class="d-none">
+                  <div class="mb-3">
+                    <label for="bank-selector" class="form-label fs-7 fw-semibold text-secondary-theme">Choose Bank</label>
+                    <select id="bank-selector" class="form-select form-input-custom fs-7">
+                      <option value="chase">Chase Bank</option>
+                      <option value="boa">Bank of America</option>
+                      <option value="wellsfargo">Wells Fargo</option>
+                      <option value="citi">CitiBank</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Guarantee details -->
+            <div class="card card-custom p-3 border-0 shadow-sm bg-emerald-subtle border-emerald">
+              <div class="d-flex gap-3 align-items-center">
+                <i class="fa-solid fa-shield-halved text-accent-theme fs-2"></i>
+                <div>
+                  <h6 class="fw-bold text-dark mb-0.5">RentIt Guarantee Protected</h6>
+                  <p class="text-secondary-theme fs-8 mb-0">Your funds are kept securely in escrow and only released to the owner 24 hours after successful rental delivery.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Order Pricing Receipt Summary (5 Cols) -->
+          <div class="col-lg-5">
+            <div class="card card-custom p-4 border-0 shadow-sm">
+              <h5 class="fw-bold text-dark font-poppins mb-4"><i class="fa-solid fa-receipt text-primary-theme me-2"></i> Order Summary</h5>
+              
+              <!-- Selected item row -->
+              <div class="d-flex gap-3 mb-4">
+                <img id="pay-item-image" src="" class="rounded-3 object-fit-cover shadow-sm" style="width: 72px; height: 72px;" alt="Rental Asset">
+                <div>
+                  <h6 class="fw-bold text-dark mb-1 font-poppins text-truncate" id="pay-item-title" style="max-width: 220px;"></h6>
+                  <p class="text-secondary-theme fs-8 mb-0 d-flex align-items-center gap-1">
+                    <i class="fa-solid fa-calendar text-primary-theme"></i> <span id="pay-summary-dates"></span>
+                  </p>
+                  <p class="text-secondary-theme fs-8 mb-0" id="pay-summary-days-qty"></p>
+                </div>
+              </div>
+
+              <hr class="border-theme my-3">
+
+              <!-- Item totals invoice -->
+              <div class="d-flex justify-content-between align-items-center mb-2.5 fs-7">
+                <span class="text-secondary-theme">Rental Cost</span>
+                <span class="font-mono fw-semibold text-dark" id="pay-summary-subtotal">₹0.00</span>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mb-2.5 fs-7 d-none text-emerald" id="pay-summary-discount-row">
+                <span>Discount applied</span>
+                <span class="font-mono fw-semibold" id="pay-summary-discount">-₹0.00</span>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mb-2.5 fs-7">
+                <span class="text-secondary-theme">Taxes & Insurance</span>
+                <span class="font-mono fw-semibold text-dark" id="pay-summary-taxes">₹0.00</span>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mb-3.5 fs-7">
+                <span class="text-secondary-theme">Refundable Deposit</span>
+                <span class="font-mono fw-semibold text-dark" id="pay-summary-deposit">₹0.00</span>
+              </div>
+
+              <hr class="border-theme my-3">
+
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <span class="fw-bold text-dark fs-6">Grand Total Payable</span>
+                <span class="fw-bold text-primary-theme fs-4 font-mono" id="pay-summary-total">₹0.00</span>
+              </div>
+
+              <!-- Pay Confirm Trigger button -->
+              <button type="button" class="btn btn-accent-custom w-100 py-3 shadow" id="confirm-payment-btn">
+                Confirm & Pay <i class="fa-solid fa-lock ms-1"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Bottom Navigation Rail -->
+    <nav class="bottom-nav">
+      <a href="home.html" class="bottom-nav-item" id="bnav-home">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      </a>
+      <a href="categories.html" class="bottom-nav-item" id="bnav-categories">
+        <i class="fa-solid fa-compass"></i>
+        <span>Categories</span>
+      </a>
+      <a href="wishlist.html" class="bottom-nav-item" id="bnav-wishlist">
+        <i class="fa-solid fa-heart"></i>
+        <span class="badge-counter d-none wishlist-badge">0</span>
+        <span>Wishlist</span>
+      </a>
+      <a href="profile.html?tab=bookings" class="bottom-nav-item active" id="bnav-bookings">
+        <i class="fa-solid fa-calendar-check"></i>
+        <span class="badge-counter d-none bookings-badge">0</span>
+        <span>Bookings</span>
+      </a>
+      <a href="profile.html" class="bottom-nav-item" id="bnav-profile">
+        <i class="fa-solid fa-user"></i>
+        <span>Profile</span>
+      </a>
+    </nav>
+
+    <!-- Bootstrap 5 Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript Shared Core -->
+    <script type="module" src="/js/script.js"></script>
+    <!-- Custom JavaScript Booking Logic -->
+    <script type="module" src="/js/booking.js"></script>
+  </body>
+</html>

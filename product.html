@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RentIt – Product Details</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+      <div class="spinner-custom mb-3"></div>
+      <h5 class="fw-semibold text-secondary-theme">Loading detailed specifications...</h5>
+    </div>
+
+    <!-- Header Navigation -->
+    <nav class="navbar navbar-custom">
+      <div class="container-fluid max-width-container d-flex justify-content-between align-items-center">
+        <a href="home.html" class="logo-brand" id="prod-brand-logo">
+          <i class="fa-solid fa-arrows-spin text-primary-theme"></i> Rent<span>It</span>
+        </a>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn dark-mode-toggle p-2 fs-5" id="prod-mode-toggle" aria-label="Toggle dark mode">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+          <a href="profile.html">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Profile" class="nav-avatar-img">
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Wrapper -->
+    <main class="main-wrapper py-4">
+      <div class="container" id="product-details-container">
+        <!-- Back Navigation Link -->
+        <div class="mb-3">
+          <a href="home.html" class="fs-7 text-secondary-theme fw-semibold" id="back-home-product">
+            <i class="fa-solid fa-arrow-left me-1"></i> Back to Explore
+          </a>
+        </div>
+
+        <div class="row g-4">
+          <!-- Left Column (Product Slider & Review Listing) (7 Cols) -->
+          <div class="col-lg-7">
+            <!-- Large Image Slider Container -->
+            <div class="product-slider mb-4">
+              <img id="detail-image" src="" class="img-fluid rounded-4 shadow-sm w-100 object-fit-cover" style="max-height: 400px;" alt="Product Asset">
+            </div>
+
+            <!-- Description Card -->
+            <div class="card card-custom p-4 border-0 shadow-sm mb-4">
+              <h5 class="fw-bold text-dark font-poppins mb-3">About this rental</h5>
+              <p class="text-secondary-theme fs-7 leading-md mb-0" id="detail-desc"></p>
+            </div>
+
+            <!-- Specifications Table Card -->
+            <div class="card card-custom p-4 border-0 shadow-sm mb-4">
+              <h5 class="fw-bold text-dark font-poppins mb-3">Specifications</h5>
+              <div class="table-responsive">
+                <table class="table table-borderless fs-7 mb-0">
+                  <tbody id="detail-specifications-body">
+                    <!-- Dynamic rendering of technical specifications -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Customer Reviews Card -->
+            <div class="card card-custom p-4 border-0 shadow-sm mb-4">
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5 class="fw-bold text-dark font-poppins mb-0">Customer Reviews</h5>
+                <!-- Dynamic write review redirection -->
+                <a href="" id="write-review-link" class="btn btn-secondary-custom btn-sm fs-8 py-1.5 px-3">
+                  <i class="fa-solid fa-pen-to-square me-1"></i> Write Review
+                </a>
+              </div>
+              
+              <!-- Review Cards Wrapper -->
+              <div id="detail-reviews-container">
+                <!-- Dynamic customer reviews -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column (Owner details & Sticky Reserve Panel) (5 Cols) -->
+          <div class="col-lg-5">
+            <!-- Booking Widget Card -->
+            <div class="card card-custom p-4 border-0 shadow-sm mb-4 sticky-filter-sidebar">
+              <!-- Item Details -->
+              <span class="badge bg-primary-light text-primary-theme px-3 py-1.5 rounded-pill font-poppins fw-semibold mb-2 d-inline-block" style="width: fit-content;" id="detail-category"></span>
+              <h4 class="fw-bold text-dark font-poppins mb-1" id="detail-title"></h4>
+              <p class="text-secondary-theme fs-7 d-flex align-items-center gap-1 mb-3">
+                <i class="fa-solid fa-location-dot text-primary-theme"></i> <span id="detail-location"></span>
+              </p>
+
+              <!-- Ratings Row -->
+              <div class="d-flex align-items-center gap-2 mb-4">
+                <span class="bg-amber-light text-amber border border-warning-subtle px-2 py-0.5 rounded fw-bold fs-7 d-flex align-items-center gap-1">
+                  <i class="fa-solid fa-star text-amber"></i> <span id="detail-rating"></span>
+                </span>
+                <span class="text-secondary-theme fs-7 fw-semibold" id="detail-reviews-count"></span>
+              </div>
+
+              <!-- Pricing Card details -->
+              <div class="bg-light p-3 rounded-4 mb-4">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <span class="fs-7 text-secondary-theme fw-semibold">Rental Price</span>
+                  <div>
+                    <span class="fw-bold text-primary-theme fs-3" id="detail-price"></span>
+                    <span class="fs-8 text-secondary-theme">/ day</span>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="fs-7 text-secondary-theme fw-semibold">Refundable Security Deposit</span>
+                  <span class="fw-bold text-dark fs-6" id="detail-deposit"></span>
+                </div>
+              </div>
+
+              <!-- Live Calendar Availability -->
+              <div class="mb-4">
+                <label class="form-label fs-7 fw-semibold text-secondary-theme mb-2"><i class="fa-regular fa-calendar-check me-1 text-accent-theme"></i> Availability Calendar</label>
+                <div class="border border-theme rounded-3 p-2.5 bg-white d-flex align-items-center gap-3">
+                  <i class="fa-solid fa-calendar-day text-secondary-theme fs-6"></i>
+                  <div>
+                    <p class="mb-0 fs-8 fw-semibold text-dark">Available to Rent Today</p>
+                    <p class="mb-0 text-accent-theme fs-8 font-mono fw-bold">Live Calendar Confirmed</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="d-flex gap-2">
+                <button class="btn btn-secondary-custom p-3" id="detail-wishlist-toggle-btn" aria-label="Toggle Wishlist">
+                  <i class="fa-regular fa-heart text-danger fs-5"></i>
+                </button>
+                <a href="" class="btn btn-primary-custom w-100 p-3 d-flex align-items-center justify-content-center gap-2" id="detail-book-now-btn">
+                  Book This Rental <i class="fa-solid fa-calendar-plus"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Owner Credentials Card -->
+            <div class="card card-custom p-4 border-0 shadow-sm">
+              <h6 class="fw-bold text-dark font-poppins mb-3">Owner Information</h6>
+              <div class="d-flex align-items-center gap-3">
+                <img id="detail-owner-avatar" src="" class="rounded-circle object-fit-cover shadow-sm" style="width: 52px; height: 52px;" alt="Owner">
+                <div>
+                  <h6 class="fw-bold text-dark mb-0 d-flex align-items-center gap-1">
+                    <span id="detail-owner-name"></span>
+                    <i class="fa-solid fa-circle-check text-accent-theme fs-7" title="Verified Professional Host"></i>
+                  </h6>
+                  <p class="text-secondary-theme fs-8 mb-0 d-flex align-items-center gap-1">
+                    <i class="fa-solid fa-star text-amber"></i> Host Rating: <span class="fw-bold text-dark" id="detail-owner-rating"></span>
+                  </p>
+                </div>
+              </div>
+
+              <hr class="border-theme my-3">
+
+              <!-- Contact Owner Details -->
+              <div class="d-flex justify-content-between align-items-center">
+                <a href="" id="detail-owner-phone" class="btn btn-secondary-custom btn-sm flex-fill me-2 py-2 d-flex align-items-center justify-content-center gap-1 fs-8">
+                  <i class="fa-solid fa-phone"></i> Call Owner
+                </a>
+                <a href="" id="detail-owner-email" class="btn btn-secondary-custom btn-sm flex-fill ms-2 py-2 d-flex align-items-center justify-content-center gap-1 fs-8">
+                  <i class="fa-solid fa-envelope"></i> Message
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Bottom Navigation Rail -->
+    <nav class="bottom-nav">
+      <a href="home.html" class="bottom-nav-item" id="bnav-home">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      </a>
+      <a href="categories.html" class="bottom-nav-item" id="bnav-categories">
+        <i class="fa-solid fa-compass"></i>
+        <span>Categories</span>
+      </a>
+      <a href="wishlist.html" class="bottom-nav-item" id="bnav-wishlist">
+        <i class="fa-solid fa-heart"></i>
+        <span class="badge-counter d-none wishlist-badge">0</span>
+        <span>Wishlist</span>
+      </a>
+      <a href="profile.html?tab=bookings" class="bottom-nav-item" id="bnav-bookings">
+        <i class="fa-solid fa-calendar-check"></i>
+        <span class="badge-counter d-none bookings-badge">0</span>
+        <span>Bookings</span>
+      </a>
+      <a href="profile.html" class="bottom-nav-item" id="bnav-profile">
+        <i class="fa-solid fa-user"></i>
+        <span>Profile</span>
+      </a>
+    </nav>
+
+    <!-- Bootstrap 5 Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript Shared Core -->
+    <script type="module" src="/js/script.js"></script>
+
+    <!-- Active Details Dynamic Loader -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get("id") || "prod-1";
+        const product = getProductById(productId);
+
+        if (!product) {
+          showToast("Item specifications could not be parsed.", "error");
+          setTimeout(() => { window.location.href = "home.html"; }, 1500);
+          return;
+        }
+
+        // --- BIND CORE DOM ---
+        document.getElementById("detail-image").src = product.image;
+        document.getElementById("detail-category").textContent = product.category;
+        document.getElementById("detail-title").textContent = product.title;
+        document.getElementById("detail-location").textContent = product.location;
+        document.getElementById("detail-rating").textContent = product.rating;
+        document.getElementById("detail-reviews-count").textContent = `(${product.reviewsCount} reviews)`;
+        document.getElementById("detail-price").textContent = `₹${product.price}`;
+        document.getElementById("detail-deposit").textContent = `₹${product.securityDeposit}`;
+        document.getElementById("detail-desc").textContent = product.description;
+
+        // BIND OWNER CARD
+        document.getElementById("detail-owner-avatar").src = product.owner.avatar;
+        document.getElementById("detail-owner-name").textContent = product.owner.name;
+        document.getElementById("detail-owner-rating").textContent = product.owner.rating || "4.8";
+        document.getElementById("detail-owner-phone").href = `tel:${product.owner.phone}`;
+        document.getElementById("detail-owner-email").href = `mailto:${product.owner.email}`;
+
+        // BIND ACTION LINKS
+        document.getElementById("detail-book-now-btn").href = `booking.html?id=${product.id}`;
+        document.getElementById("write-review-link").href = `reviews.html?id=${product.id}`;
+
+        // SPECIFICATIONS LOOPER
+        const specBody = document.getElementById("detail-specifications-body");
+        specBody.innerHTML = "";
+        product.specifications.forEach(spec => {
+          const rowHtml = `
+            <tr class="border-bottom border-light">
+              <td class="fw-semibold text-secondary-theme py-2 w-40" style="padding-left: 0;">${spec.key}</td>
+              <td class="text-dark py-2">${spec.value}</td>
+            </tr>
+          `;
+          specBody.insertAdjacentHTML("beforeend", rowHtml);
+        });
+
+        // REVIEWS LOOPER
+        const reviewsContainer = document.getElementById("detail-reviews-container");
+        reviewsContainer.innerHTML = "";
+
+        if (product.reviews.length === 0) {
+          reviewsContainer.innerHTML = `
+            <div class="text-center py-4 text-secondary-theme">
+              <i class="fa-regular fa-comments fs-2 mb-2"></i>
+              <p class="fs-7 mb-0">No reviews listed yet. Rent it and leave the first feedback!</p>
+            </div>
+          `;
+        } else {
+          product.reviews.forEach(r => {
+            let starHtml = "";
+            for (let i = 1; i <= 5; i++) {
+              if (i <= Math.floor(r.rating)) {
+                starHtml += `<i class="fa-solid fa-star text-amber"></i>`;
+              } else {
+                starHtml += `<i class="fa-regular fa-star text-secondary"></i>`;
+              }
+            }
+
+            const rHtml = `
+              <div class="review-item mb-3">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <div class="d-flex align-items-center gap-2">
+                    <img src="${r.avatar || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80'}" class="review-author-avatar" alt="${r.author}">
+                    <div>
+                      <h6 class="fw-bold text-dark fs-7 mb-0">${r.author}</h6>
+                      <span class="text-secondary-theme fs-8">${r.date}</span>
+                    </div>
+                  </div>
+                  <div class="d-flex align-items-center gap-1 fs-8">
+                    ${starHtml}
+                  </div>
+                </div>
+                <p class="text-secondary-theme fs-7 mb-0 italic">"${r.text}"</p>
+              </div>
+            `;
+            reviewsContainer.insertAdjacentHTML("beforeend", rHtml);
+          });
+        }
+
+        // WISHLIST TOGGLE INTERACTION
+        const wishBtn = document.getElementById("detail-wishlist-toggle-btn");
+        const wishIcon = wishBtn.querySelector("i");
+        
+        function updateWishButtonUI() {
+          const isWish = isInWishlist(product.id);
+          if (isWish) {
+            wishIcon.className = "fa-solid fa-heart text-danger fs-5";
+          } else {
+            wishIcon.className = "fa-regular fa-heart text-danger fs-5";
+          }
+        }
+
+        updateWishButtonUI();
+
+        wishBtn.addEventListener("click", () => {
+          toggleWishlist(product.id);
+          updateWishButtonUI();
+        });
+      });
+    </script>
+  </body>
+</html>
